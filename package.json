@@ -1,0 +1,20 @@
+{
+  "name": "chat-app",
+  "version": "1.0.0",
+  "description": "Chat applikation for ensomme unge",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server",
+    "dev": "nodemon server"
+  },
+  "author": "Abd, Andrew, Britt & Mie",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.29.1",
+    "socket.io": "^3.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
