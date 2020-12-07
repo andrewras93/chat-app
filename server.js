@@ -3,6 +3,7 @@ const http = require('http');
 const express = require('express');
 const socketio = require('socket.io');
 const formatMessage = require('./utils/messages');
+const {userJoin, getCurrentUser, userLeave, getRoomUsers} = require('./utils/users');
 
 const app = express();
 const server = http.createServer(app);
@@ -15,23 +16,33 @@ const botName = 'BuddyHood Bot';
 
 // Kører når en bruger opretter forbindelse
 io.on('connection', socket => {
+    socket.on('joinRoom', ({username, room}) => {
+        const user = userJoin(socket.id, username, room);
 
-    // Velkomst besked til den nye bruger
-    socket.emit('message', formatMessage(botName, 'Velkommen til BuddyHood chatten.'));
+        socket.join(user.room);
 
-    // Gør opmærksom på en ny bruger har tilkoblet sig chatten
-    socket.broadcast.emit('message', formatMessage(botName, 'En ny bruger har tilkoblet sig chatten.'));
+        // Velkomst besked til den nye bruger
+        socket.emit('message', formatMessage(botName, 'Velkommen til BuddyHood chatten.'));
 
-    // Kører når en bruger forlader chatten
-    socket.on('disconnect', () => {
-        io.emit('message', formatMessage(botName, 'En bruger har forladt chatten.'));
+        // Gør opmærksom på en ny bruger har tilkoblet sig chatten
+        socket.broadcast.to(user.room).emit('message', formatMessage(botName, `${user.username} har tilkoblet sig chatten.`));
     });
 
     // Opfanger chatMessage (beskeden/værdien) fra main.js og sender retur
     socket.on('chatMessage', msg => {
-        io.emit('message', formatMessage('BRUGER', msg));
+        const user = getCurrentUser(socket.id);
+
+        io.to(user.room).emit('message', formatMessage(user.username, msg));
     });
 
+    // Kører når en bruger forlader chatten
+    socket.on('disconnect', () => {
+        const user = userLeave(socket.id);
+
+        if(user){
+            io.to(user.room).emit('message', formatMessage(botName, `${user.username} har forladt chatten.`));
+        }
+    });
 
 });
 

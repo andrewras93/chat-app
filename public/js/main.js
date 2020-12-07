@@ -1,7 +1,17 @@
 const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-messages');
 
+// Hent brugernavn og chatrum fra URL
+const {username, room} = Qs.parse(location.search, {
+    ignoreQueryPrefix: true
+});
+
+console.log(username, room);
+
 const socket = io();
+
+// Join chatrum
+socket.emit('joinRoom', {username, room});
 
 // Opfanger beskeden fra serveren og kører nedenstående funktioner
 socket.on('message', message => {
