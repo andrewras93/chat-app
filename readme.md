@@ -1,4 +1,4 @@
-# meeton Chat Applikation
+# BuddyHood Chat Applikation
 
 En platform som skal hjælpe ensomme unge med at møde nye venner online.
 
