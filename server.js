@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 io.on('connection', socket => {
 
     // Velkomst besked til den nye bruger
-    socket.emit('message', 'Velkommen til meeton.');
+    socket.emit('message', 'Velkommen til BuddyHood.');
 
     // Gør opmærksom på en ny bruger har tilkoblet sig chatten
     socket.broadcast.emit('message', 'En bruger har tilkoblet sig chatten.');
@@ -22,6 +22,11 @@ io.on('connection', socket => {
     // Kører når en bruger forlader chatten
     socket.on('disconnect', () => {
         io.emit('message', 'En bruger har forladt chatten.');
+    });
+
+    // Opfanger chatMessage (beskeden/værdien) fra main.js og sender retur
+    socket.on('chatMessage', msg => {
+        io.emit('message', msg);
     });
 
 
