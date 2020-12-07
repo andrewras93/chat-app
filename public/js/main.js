@@ -1,6 +1,7 @@
 const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-messages');
-
+const roomName = document.getElementById('room-name');
+const userList = document.getElementById('users');
 // Hent brugernavn og chatrum fra URL
 const {username, room} = Qs.parse(location.search, {
     ignoreQueryPrefix: true
@@ -12,6 +13,12 @@ const socket = io();
 
 // Join chatrum
 socket.emit('joinRoom', {username, room});
+
+// Henter chatrum og brugere
+socket.on('roomUsers', ({room, users}) =>{
+   outputRoomName(room);
+   outputUsers(users);
+});
 
 // Opfanger beskeden fra serveren og kører nedenstående funktioner
 socket.on('message', message => {
@@ -46,4 +53,16 @@ function outputMessage(message){
                     ${message.text}
                 </p>`;
     document.querySelector('.chat-messages').appendChild(div);
+}
+
+// Udskriver navnet på chatrummet som HTML tekst i dokumentet
+function outputRoomName(room){
+    roomName.innerText = room;
+}
+
+// Udskriver bruger liste for hvert chatrum
+function outputUsers(users){
+    userList.innerHTML = `
+        ${users.map(user => `<li>${user.username}</li>`).join('')}
+    `;
 }

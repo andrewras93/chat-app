@@ -26,6 +26,13 @@ io.on('connection', socket => {
 
         // Gør opmærksom på en ny bruger har tilkoblet sig chatten
         socket.broadcast.to(user.room).emit('message', formatMessage(botName, `${user.username} har tilkoblet sig chatten.`));
+
+        // Liste over brugerne i et chatrum
+        io.to(user.room).emit('roomUsers', {
+            room: user.room,
+            users: getRoomUsers(user.room)
+        });
+
     });
 
     // Opfanger chatMessage (beskeden/værdien) fra main.js og sender retur
@@ -41,6 +48,12 @@ io.on('connection', socket => {
 
         if(user){
             io.to(user.room).emit('message', formatMessage(botName, `${user.username} har forladt chatten.`));
+
+            // Liste over brugerne i et chatrum
+            io.to(user.room).emit('roomUsers', {
+                room: user.room,
+                users: getRoomUsers(user.room)
+            });
         }
     });
 
