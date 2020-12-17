@@ -1,0 +1,99 @@
+/* Global */
+@import url('https://fonts.googleapis.com/css2?family=Baumans&family=Inter&display=swap');
+
+:root{
+    --primary-color: #18ACE1;
+    --secondary-color: #18ACE1;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 0 10px;
+}
+
+.divider{
+    height: 0.1rem;
+    background-color: var(--primary-color);
+    width: 100%;
+    margin: 2rem 0;
+}
+
+/* Fonts */
+h1, h2, .form-username-label, .form-room-label, .btn{
+    font-family: 'Baumans', cursive;
+}
+
+p{
+    font-family: 'Inter', sans-serif;
+}
+
+/* INDEX.HTML */
+
+/* Header */
+
+.join-header{
+    background-color: var(--primary-color);
+    color: white;
+    grid-column: 1/9;
+    padding: 0.4rem 1rem;
+}
+
+/* Main */
+
+.join-main{
+    grid-column: 1/9;
+    padding: 2rem 1rem;
+}
+
+.join-welcome-text h2{
+    text-transform: uppercase;
+    color: var(--secondary-color);
+}
+
+.join-welcome-text p{
+    padding: 1rem 0;
+}
+
+/* Chat Form */
+
+.join-form{
+    margin: 2rem 0;
+}
+
+.form-control{
+    margin-bottom: 0.6rem;
+}
+
+.form-username-label, .form-room-label{
+    grid-column: 1/4;
+    color: var(--secondary-color);
+    margin: auto 0;
+}
+
+.form-username-input, .form-room-select{
+    grid-column: 4/9;
+}
+
+.form-username-input, .form-room-select{
+    padding: 0.4rem;
+    border: 0.1rem solid var(--primary-color);
+    border-radius: 0.2rem;
+}
+
+/* Chat Button */
+
+.btn{
+    background-color: var(--primary-color);
+    border: none;
+    padding: 0.6rem;
+    color: white;
+    border-radius: 0.2rem;
+    text-transform: uppercase;
+}
