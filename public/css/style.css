@@ -1,9 +1,19 @@
 /* Global */
+
 @import url('https://fonts.googleapis.com/css2?family=Baumans&family=Inter&display=swap');
 
 :root{
-    --primary-color: #18ACE1;
-    --secondary-color: #18ACE1;
+    --primary-color: #189FDB;
+    --dark: #222;
+}
+
+body{
+    text-align: center;
+    /*background-color: rgba(229,8,126,1);*/
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(229,8,126,1) 100%) no-repeat;
+    /*background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;*/
 }
 
 *{
@@ -12,59 +22,73 @@
     padding: 0;
 }
 
+img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+li{
+    list-style-type: none;
+}
+
 .grid{
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     gap: 0 10px;
 }
 
-.divider{
-    height: 0.1rem;
-    background-color: var(--primary-color);
-    width: 100%;
-    margin: 2rem 0;
+.join-container{
+    /*background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(229,8,126,1) 100%);*/
 }
 
 /* Fonts */
-h1, h2, .form-username-label, .form-room-label, .btn{
+
+h1, h2, h3, .form-username-label, .form-room-label, .btn{
     font-family: 'Baumans', cursive;
 }
 
-p{
+p, #room-name, #users li{
     font-family: 'Inter', sans-serif;
 }
 
 /* INDEX.HTML */
 
-/* Header */
-
-.join-header{
-    background-color: var(--primary-color);
-    color: white;
-    grid-column: 1/9;
-    padding: 0.4rem 1rem;
-}
-
 /* Main */
 
 .join-main{
-    grid-column: 1/9;
     padding: 2rem 1rem;
+}
+
+/* buddyhood Logo */
+
+.buddyhood-logo{
+    grid-column: 1/9;
+    margin: 2rem auto;
+}
+
+/* Welcome Text */
+
+.join-welcome-text{
+    grid-column: 1/9;
 }
 
 .join-welcome-text h2{
     text-transform: uppercase;
-    color: var(--secondary-color);
+    color: var(--primary-color);
 }
 
 .join-welcome-text p{
     padding: 1rem 0;
+    color: white;
 }
 
 /* Chat Form */
 
 .join-form{
     margin: 2rem 0;
+    grid-column: 1/9;
 }
 
 .form-control{
@@ -72,28 +96,210 @@ p{
 }
 
 .form-username-label, .form-room-label{
-    grid-column: 1/4;
-    color: var(--secondary-color);
-    margin: auto 0;
+    grid-column: 1/9;
+    color: white;
+    margin: 0 0 0.4rem 0;
 }
 
 .form-username-input, .form-room-select{
-    grid-column: 4/9;
+    grid-column: 1/9;
 }
 
 .form-username-input, .form-room-select{
     padding: 0.4rem;
-    border: 0.1rem solid var(--primary-color);
     border-radius: 0.2rem;
+    border: none;
+    background-color: white;
 }
 
 /* Chat Button */
 
-.btn{
+.join-btn{
     background-color: var(--primary-color);
     border: none;
     padding: 0.6rem;
     color: white;
     border-radius: 0.2rem;
     text-transform: uppercase;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+/* Footer */
+
+footer{
+    padding: 2rem 1rem;
+}
+
+.social-icons a{
+    margin: 0.2rem;
+}
+
+.social-icons a:last-of-type{
+    color: purple;
+}
+
+/* CHAT.HTML */
+
+/* Container */
+
+.chat-container{
+    padding: 2rem 1rem;
+    text-align: left;
+}
+
+/* Header */
+
+.chat-header{
+    grid-column: 1/9;
+    display: flex;
+    justify-content: space-between;
+}
+
+.chat-header h1{
+    color: var(--primary-color);
+}
+
+.chat-container a{
+    text-decoration: none;
+    margin: auto 0;
+    color: var(--dark);
+}
+
+/* Main */
+
+.chat-main, .chat-sidebar, .chat-messages, .chat-form-container{
+    grid-column: 1/9;
+}
+
+.chat-main{
+    margin: 2rem 0;
+}
+
+/* Sidebar */
+
+#room-name, #users{
+    margin: 0.4rem 0;
+    color: var(--dark);
+}
+
+.fas.fa-comments, .fas.fa-users{
+    color: var(--primary-color) !important;
+}
+
+.chat-sidebar{
+    order: 3;
+}
+
+.chat-sidebar h3{
+    color: white;
+}
+
+/* Messages */
+
+.chat-messages{
+    order: 1;
+}
+
+/* Chat Form */
+
+.chat-form-container{
+    order: 2;
+    margin: 1rem 0;
+}
+
+#chat-form input{
+    grid-column: 1/7;
+    padding: 0.4rem;
+    border: none;
+    border-radius: 0.2rem;
+}
+
+#chat-form .btn{
+    grid-column: 7/9;
+}
+
+#chat-form .btn{
+    background-color: var(--primary-color);
+    border: none;
+    padding: 0.6rem;
+    color: white;
+    border-radius: 0.2rem;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.chat-messages{
+    height: 370px;
+    overflow-y: scroll;
+    padding: 0.4rem;
+}
+
+.message{
+    background: rgba(24, 159, 219, 0.5);
+    padding: 0.4rem;
+    border-radius: 0.2rem;
+    margin-top: 0.4rem;
+}
+
+.meta{
+    color: white;
+}
+
+.text{
+    color: var(--dark);
+    margin-top: 0.2rem;
+}
+
+/* Tablet */
+
+@media screen and (min-width: 768px){
+
+    /* Global */
+
+    body{
+        text-align: left;
+    }
+
+    /* INDEX.HTML */
+
+    /* Main */
+
+    .join-main{
+        padding: 4rem 1rem;
+    }
+
+    /* buddyhood Logo */
+
+    .buddyhood-logo{
+        grid-column: 5/9;
+        grid-row: 2;
+    }
+
+    /* Welcome Text */
+
+    .join-welcome-text{
+        grid-column: 1/5;
+    }
+
+    /* Chat Form */
+
+    .join-form{
+        margin: 4rem 0;
+        grid-column: 1/5;
+    }
+
+}
+
+/* Desktop */
+
+@media screen and (min-width: 1200px){
+
+    /* Global */
+
+    .container{
+        max-width: 1200px;
+        margin: auto;
+    }
+
 }

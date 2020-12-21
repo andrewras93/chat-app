@@ -14,41 +14,48 @@
     <title>BuddyHood Chat</title>
 </head>
 <body>
-<div class="join-container grid">
-    <header class="join-header">
-        <h1>buddyhood</h1>
-    </header>
-    <main class="join-main">
-        <div class="join-welcome-text">
-            <h2>Velkommen til</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, quod?</p>
-        </div>
-        <form action="chat.html" class="join-form">
-            <div class="form-control grid">
-                <label for="username" class="form-username-label">Brugernavn</label>
-                <input  class="form-username-input"
-                        type="text"
-                        name="username"
-                        id="username"
-                        placeholder="Indtast Brugernavn"
-                        required
-                />
+<div class="join-container">
+    <div class="container">
+        <main class="join-main grid">
+            <div class="buddyhood-logo">
+                <img src="buddyhood-logo.png" alt="buddyhood logo">
             </div>
-            <div class="form-control grid">
-                <label for="room" class="form-room-label">Rum</label>
-                <select name="room" id="room" class="form-room-select">
-                    <option value="Emne 1">Emne 1</option>
-                    <option value="Emne 2">Emne 2</option>
-                    <option value="Emne 3">Emne 3</option>
-                    <option value="Emne 4">Emne 4</option>
-                    <option value="Emne 5">Emne 5</option>
-                    <option value="Emne 6">Emne 6</option>
-                </select>
+            <div class="join-welcome-text">
+                <h2>Velkommen til</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, quod?</p>
             </div>
-            <div class="divider"></div>
-            <button type="submit" class="btn">Chat</button>
-        </form>
-    </main>
+            <form action="chat.html" class="join-form">
+                <div class="form-control grid">
+                    <label for="username" class="form-username-label">Brugernavn</label>
+                    <input  class="form-username-input"
+                            type="text"
+                            name="username"
+                            id="username"
+                            placeholder="Indtast Brugernavn"
+                            required
+                    />
+                </div>
+                <div class="form-control grid">
+                    <label for="room" class="form-room-label">Rum</label>
+                    <select name="room" id="room" class="form-room-select">
+                        <option value="Emne 1">Emne 1</option>
+                        <option value="Emne 2">Emne 2</option>
+                        <option value="Emne 3">Emne 3</option>
+                        <option value="Emne 4">Emne 4</option>
+                        <option value="Emne 5">Emne 5</option>
+                        <option value="Emne 6">Emne 6</option>
+                    </select>
+                </div>
+                <button type="submit" class="join-btn">Chat</button>
+            </form>
+        </main>
+        <footer>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
+                <a href="#"><i class="fab fa-instagram fa-2x"></i></i></a>
+            </div>
+        </footer>
+    </div>
 </div>
 </body>
 </html>

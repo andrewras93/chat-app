@@ -8,14 +8,15 @@
     <title>BuddyHood Chat</title>
 </head>
 <body>
-<div class="chat-container">
+<div class="chat-container grid container">
     <header class="chat-header">
-        <h1><!--<i class="fas fa-smile"></i>-->BuddyHood</h1>
+        <h1>buddyhood</h1>
+        <!--<img src="buddyhood-logo.png" alt="buddyhood Logo">-->
         <a href="index.html" class="btn">Forlad Rum</a>
     </header>
-    <main class="chat-main">
+    <main class="chat-main grid">
         <div class="chat-sidebar">
-            <h3><i class="fas fa-comments"></i> Rum:</h3>
+            <h3><i class="fas fa-comments"></i> Rum</h3>
             <h2 id="room-name"></h2>
             <h3><i class="fas fa-users"></i> Brugere</h3>
             <ul id="users">
@@ -23,20 +24,26 @@
         </div>
         <div class="chat-messages">
         </div>
+        <div class="chat-form-container">
+            <form id="chat-form" class="grid">
+                <input
+                        id="msg"
+                        type="text"
+                        placeholder="Skriv Besked"
+                        required
+                        autocomplete="off"
+                />
+                <button class="btn"><i class="fas fa-paper-plane"></i> Send</button>
+            </form>
+        </div>
     </main>
-    <div class="chat-form-container">
-        <form id="chat-form">
-            <input
-                    id="msg"
-                    type="text"
-                    placeholder="Skriv Besked"
-                    required
-                    autocomplete="off"
-            />
-            <button class="btn"><i class="fas fa-paper-plane"></i> Send</button>
-        </form>
-    </div>
 </div>
+<footer class="container">
+    <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
+        <a href="#"><i class="fab fa-instagram fa-2x"></i></i></a>
+    </div>
+</footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.js" integrity="sha512-53y53BQwxZvk4YGd9SkHPqI7nDwlIIFZ4D2BSJG08Co7y6O3YsWeRtO6trPtdoyqfTCTkTbCulNosIAI6E4UvQ==" crossorigin="anonymous"></script>
 <script src="/socket.io/socket.io.js"></script>

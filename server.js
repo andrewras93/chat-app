@@ -12,7 +12,7 @@ const io = socketio(server);
 // Sætter den til at køre vores index side, når serveren er i gang
 app.use(express.static(path.join(__dirname, 'public')));
 
-const botName = 'BuddyHood Bot';
+const botName = 'buddyhood Bot';
 
 // Kører når en bruger opretter forbindelse
 io.on('connection', socket => {
@@ -22,7 +22,7 @@ io.on('connection', socket => {
         socket.join(user.room);
 
         // Velkomst besked til den nye bruger
-        socket.emit('message', formatMessage(botName, 'Velkommen til BuddyHood chatten.'));
+        socket.emit('message', formatMessage(botName, 'Velkommen til buddyhood chatten.'));
 
         // Gør opmærksom på en ny bruger har tilkoblet sig chatten
         socket.broadcast.to(user.room).emit('message', formatMessage(botName, `${user.username} har tilkoblet sig chatten.`));
