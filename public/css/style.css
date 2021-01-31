@@ -9,11 +9,7 @@
 
 body{
     text-align: center;
-    /*background-color: rgba(229,8,126,1);*/
     background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(229,8,126,1) 100%) no-repeat;
-    /*background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;*/
 }
 
 *{
@@ -36,11 +32,6 @@ li{
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     gap: 0 10px;
-}
-
-.join-container{
-    /*background: rgb(255,255,255);
-    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(229,8,126,1) 100%);*/
 }
 
 /* Fonts */
